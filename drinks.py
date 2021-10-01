@@ -3,12 +3,13 @@ from constants import DRINK_LIST
 from typing import Dict, List
 
 class Drink:
+    """Drink is a collection of Inventory Items, wraps their use and aggregates their functions """
     def __init__(self,name, ingredient_quantity:List[tuple]=[]) -> None:
         #ingreidient name, ingredient value
         self.name =name
         self.ingredient_quantity= ingredient_quantity or []
     
-    def add_ingredient_and_quantity(self,ingredient:Ingredient,quantity:float):
+    def add_inventory_item_and_quantity(self,ingredient:I_Inventory_Item,quantity:float):
         self.ingredient_quantity.append((ingredient,quantity))
     
     def get_formatted_cost(self):
@@ -57,5 +58,5 @@ def fill_drink_inventory_from_dict(drink_inventory:Drink_Inventory, ingredient_i
     for drink_name,ingredient_name_dict in drink_configs.items():
         new_drink = Drink(drink_name)
         for ingredient_name, units in ingredient_name_dict.items():
-            new_drink.add_ingredient_and_quantity(ingredient_inventory.get_ingredient(ingredient_name),units)
+            new_drink.add_inventory_item_and_quantity(ingredient_inventory.get_ingredient(ingredient_name),units)
         drink_inventory.add_drink(new_drink)

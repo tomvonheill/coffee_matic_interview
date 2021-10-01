@@ -1,8 +1,8 @@
 ## How to run
 python3 main.py will start up the program
 
-### Purpose of readme
-The purpose of this readme is to keep track of design descisions, and potential improvements
+### Purpose of this readme
+The purpose of this readme is to keep track of design descisions, and potential improvements. 
 
 ### Some Improvements to make 
 
@@ -13,3 +13,4 @@ The purpose of this readme is to keep track of design descisions, and potential 
 - have a class that instantiates drink inventory/ ingredient inventory, this way we may be able to consume other data sources without changing the drink/ingredient class
 - maybe look into observer pattern.... this may be fruitless as we are really just dealing with collections at the moment
 - if you have time add some tests
+- Looks like Drink may be able to be abstracted out to an inventory_item collection that would wrap the functionality of the inventory item and provide a facade of dealing with the inventory

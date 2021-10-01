@@ -10,3 +10,4 @@ python3 main.py will start up the program
 - some useless functions on the ingredient_inventory class
 - have a class that instantiates drink inventory/ ingredient inventory, this way we may be able to consume other data sources without changing the drink/ingredient class
 - maybe look into observer pattern.... this may be fruitless as we are really just dealing with collections at the moment
+- if you have time add some tests

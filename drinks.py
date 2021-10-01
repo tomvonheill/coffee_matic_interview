@@ -1,4 +1,4 @@
-from ingredients import I_Ingredient, Ingredient, ingredient_dict, Ingredient_Inventory
+from ingredients import I_Inventory_Item, Ingredient, ingredient_dict, Ingredient_Inventory
 from constants import DRINK_LIST
 from typing import Dict, List
 

@@ -1,5 +1,5 @@
 from constants import INGREDIENT_LIST
-from ingredients import I_Ingredient, Ingredient
+from ingredients import I_Inventory_Item, Ingredient
 
 class Ingredient_Inventory:
     def __init__(self, ingredient_list:list):
@@ -19,7 +19,7 @@ class Ingredient_Inventory:
     def is_ingredient_availible(self, ingredient_name:str,units:float):
         self.ingredient_inv[ingredient_name,units]
     
-    def add_ingredient_to_inventory(self, ingredient_name:str, ingredient_instance:I_Ingredient):
+    def add_ingredient_to_inventory(self, ingredient_name:str, ingredient_instance:I_Inventory_Item):
         self.ingredient_inv[ingredient_name]=ingredient_instance
     
     def get_ingredient(self, ingredient_name):

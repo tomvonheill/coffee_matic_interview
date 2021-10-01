@@ -1,4 +1,5 @@
 #testing dynamically creating ingredients
+from typing import List, Tuple
 from constants import INGREDIENT_LIST
 from abc import ABC, abstractmethod
 
@@ -47,7 +48,7 @@ class Ingredient(I_Inventory_Item):
         return self.__repr__()
 
 class Ingredient_Inventory:
-    def __init__(self, ingredient_list:list):
+    def __init__(self, ingredient_list:List[Tuple]):
         self.ingredient_inv = {args[0]: Ingredient(*args) for args in ingredient_list}
     
     def display_inventory(self) -> None:

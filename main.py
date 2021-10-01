@@ -9,6 +9,7 @@ if __name__ == "__main__":
     ing_inv = Ingredient_Inventory(INGREDIENT_LIST)
     drink_inv =Drink_Inventory()
     fill_drink_inventory_from_dict(drink_inv,ing_inv,DRINK_LIST)
+    ing_inv.display_inventory()
     drink_inv.display_inventory()
     stdin_fileno = sys.stdin
     for line in stdin_fileno:

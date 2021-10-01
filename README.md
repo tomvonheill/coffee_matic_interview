@@ -14,4 +14,5 @@ The purpose of this readme is to keep track of design descisions, and potential 
 - maybe look into observer pattern.... this may be fruitless as we are really just dealing with collections at the moment
 - if you have time add some tests
 - Looks like Drink may be able to be abstracted out to an inventory_item collection that would wrap the functionality of the inventory item and provide a facade of dealing with the inventory
-- get formatted cost seems as though it is taking away from re-usability of the Drink class which could most likely be turned into a Inventory_Item_Composite class/interface
+- get formatted cost seems as though it is taking away from re-usability of the Drink class which could most likely be turned into a Inventory_Item_Composite class/interface.... This could be extended to other uses.... how many interfaces should we split this up into
+- move formatting cost way from drink class? or keep it and change to cost_str? could be changed depending on what currency we are using in the future

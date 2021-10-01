@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 
 class I_Inventory_Item(ABC):
     """
-    Interface fo keeping track of an inventory item
+    Interface for keeping track of an inventory item, stock, price,etc
     """
 
     @abstractmethod

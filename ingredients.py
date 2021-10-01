@@ -48,6 +48,7 @@ class Ingredient(I_Inventory_Item):
         return self.__repr__()
 
 class Ingredient_Inventory:
+    """Used to ensure we use one pool of Inventory Items to add to bundled inventory item classes"""
     def __init__(self, ingredient_list:List[Tuple]):
         self.ingredient_inv = {args[0]: Ingredient(*args) for args in ingredient_list}
     

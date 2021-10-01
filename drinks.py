@@ -1,55 +1,64 @@
 from ingredients import I_Inventory_Item, Ingredient, ingredient_dict, Ingredient_Inventory
 from constants import DRINK_LIST
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 class Drink:
     """Drink is a collection of Inventory Items, wraps their use and aggregates their functions """
-    def __init__(self,name, ingredient_quantity:List[tuple]=[]) -> None:
-        #ingreidient name, ingredient value
+    def __init__(self,name:str, ingredient_quantity:List[Tuple[I_Inventory_Item,int]]=[]) -> None:
         self.name =name
         self.ingredient_quantity= ingredient_quantity or []
     
     def add_inventory_item_and_quantity(self,ingredient:I_Inventory_Item,quantity:float):
+        """Add Inventory Item and specific quanity of that item needed to composite makeup"""
         self.ingredient_quantity.append((ingredient,quantity))
     
-    def get_formatted_cost(self):
+    def get_formatted_cost(self)->str:
+        """
+        outputs the cost in $dollar.cents format
+        """
         cost = 0
         for ingredient, quantity in self.ingredient_quantity:
             cost += ingredient.get_cost()*quantity
         return '${:,.2f}'.format(cost)
     
-    def in_stock(self):
+    def in_stock(self)->bool:
+        """
+        Checks if all inventory items in the drinks composition have
+        sufficient quanity to create the composite item
+        """
         return all([ingredient.is_quantity_availible(quantity) for ingredient, quantity in self.ingredient_quantity])
     
-    def dispense_drink(self):
+    def dispense_drink(self)->None:
+        """Take the quantities away from inventory items this object is composed of"""
         [ingedient.use_quantity(quantity) for ingedient,quantity in self.ingredient_quantity] 
     
-    def get_name(self):
+    def get_name(self) ->str:
+        """Return Item Name"""
         return self.name
 
     def __str__(self) -> str:
         return f'{self.name}, {self.get_formatted_cost()}, {self.in_stock()}'
-    def __lt__(self,other):
+    def __lt__(self,other)->bool:
         return self.__str__()<other.__str__()
 
 class Drink_Inventory:
     def __init__(self, ) -> None:
         self.drink_inv=[]
     
-    def add_drink(self, drink:Drink):
+    def add_drink(self, drink:Drink)->None:
         self.drink_inv.append(drink)
         self.drink_inv.sort()
     
-    def display_inventory(self):
+    def display_inventory(self)->None:
         for order,drink in enumerate(self.drink_inv, start=1):
             print(f'{order}, {drink}')
     
-    def drink_in_stock(self,indx):
+    def drink_in_stock(self,indx)->bool:
         return self.drink_inv[indx].in_stock()
     
-    def dispense_drink(self,indx):
+    def dispense_drink(self,indx)->None:
         self.drink_inv[indx].dispense_drink()
-    def get_drink_name(self,indx):
+    def get_drink_name(self,indx)->str:
         return self.drink_inv[indx].get_name()
     
 

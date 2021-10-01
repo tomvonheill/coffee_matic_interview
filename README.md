@@ -1,8 +1,10 @@
-(or don't readme lol)
 ## How to run
 python3 main.py will start up the program
 
-### Some Improvements to make
+### Purpose of readme
+The purpose of this readme is to keep track of design descisions, and potential improvements
+
+### Some Improvements to make 
 
 - lets get something to manage stdin
 - abstract out some interfaces... seems like we have a lot of overlap between drink/drinks/ingredient.

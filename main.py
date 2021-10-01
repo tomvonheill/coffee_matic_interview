@@ -1,8 +1,8 @@
 from constants import DRINK_LIST
 import sys
-from ingredients import Ingredient_Inventory,Ingredient
+from ingredients import Ingredient_Inventory
 from constants import *
-from drinks import Drink_Inventory, Drink, fill_drink_inventory_from_dict
+from drinks import Drink_Inventory, fill_drink_inventory_from_dict
 
 if __name__ == "__main__":
     #set up our inventorys

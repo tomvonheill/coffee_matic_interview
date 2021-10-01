@@ -1,11 +1,10 @@
-from ingredients import I_Inventory_Item, Ingredient, ingredient_dict, Ingredient_Inventory
-from constants import DRINK_LIST
-from typing import Dict, List, Tuple
+from ingredients import I_Inventory_Item, Ingredient_Inventory
+from typing import List, Tuple
 
 from abc import ABC, abstractmethod
 
 class I_Composite_Inventory_Item(ABC):
-    """a collection of Inventory Items, wraps them and handles them as a composit item"""
+    """Composed of Inventory Items, wraps them and handles them as a composit item"""
     @abstractmethod
     def add_inventory_item_and_quantity(self,ingredient:I_Inventory_Item,quantity:float):
         """Add Inventory Item and specific quanity of that item needed to composite makeup"""

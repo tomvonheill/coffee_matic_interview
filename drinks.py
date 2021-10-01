@@ -2,7 +2,34 @@ from ingredients import I_Inventory_Item, Ingredient, ingredient_dict, Ingredien
 from constants import DRINK_LIST
 from typing import Dict, List, Tuple
 
-class Drink:
+from abc import ABC, abstractmethod
+
+class I_Composite_Inventory_Item(ABC):
+    """a collection of Inventory Items, wraps them and handles them as a composit item"""
+    @abstractmethod
+    def add_inventory_item_and_quantity(self,ingredient:I_Inventory_Item,quantity:float):
+        """Add Inventory Item and specific quanity of that item needed to composite makeup"""
+        pass
+    
+    @abstractmethod
+    def in_stock(self)->bool:
+        """Checks if inventory items i'm composed of are in stock"""
+        pass
+    
+    @abstractmethod
+    def execute_item_creation(self)->None:
+        """Will consume inventory items i'm composed of"""
+        pass
+    @abstractmethod
+    def get_formatted_cost(self)->str:
+        """returns cost of item string form"""
+        pass
+    
+    @abstractmethod
+    def get_name(self) ->str:
+        """Return Item Name"""
+
+class Drink(I_Composite_Inventory_Item):
     """Drink is a collection of Inventory Items, wraps their use and aggregates their functions """
     def __init__(self,name:str, ingredient_quantity:List[Tuple[I_Inventory_Item,int]]=[]) -> None:
         self.name =name
@@ -28,7 +55,7 @@ class Drink:
         """
         return all([ingredient.is_quantity_availible(quantity) for ingredient, quantity in self.ingredient_quantity])
     
-    def dispense_drink(self)->None:
+    def execute_item_creation(self)->None:
         """Take the quantities away from inventory items this object is composed of"""
         [ingedient.use_quantity(quantity) for ingedient,quantity in self.ingredient_quantity] 
     
@@ -57,7 +84,7 @@ class Drink_Inventory:
         return self.drink_inv[indx].in_stock()
     
     def dispense_drink(self,indx)->None:
-        self.drink_inv[indx].dispense_drink()
+        self.drink_inv[indx].execute_item_creation()
     def get_drink_name(self,indx)->str:
         return self.drink_inv[indx].get_name()
     

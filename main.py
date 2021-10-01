@@ -17,7 +17,7 @@ if __name__ == "__main__":
         if line =='':
             pass
         elif line.lower() == 'q':
-            print('Found exit. Terminating the program')
+            #exit silently
             exit(0)
         elif line.lower() == 'r':
             ing_inv.restock_inventory()
